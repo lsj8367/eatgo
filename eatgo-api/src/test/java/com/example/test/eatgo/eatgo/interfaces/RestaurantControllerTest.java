@@ -6,7 +6,6 @@ import com.example.test.eatgo.eatgo.domain.MenuItemRepositoryImpl;
 import com.example.test.eatgo.eatgo.domain.RestaurantRepository;
 import com.example.test.eatgo.eatgo.domain.RestaurantRepositoryImpl;
 import org.junit.jupiter.api.Test;
-import org.mockito.Spy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -50,9 +49,9 @@ public class RestaurantControllerTest {
                 .andExpect(content().string(
                         containsString("\"name\":\"Bob zip\"")
                 ))
-        .andExpect(content().string(
-                containsString("Kimchi")
-        ));
+                .andExpect(content().string(
+                        containsString("Kimchi")
+                ));
 
         mvc.perform(get("/restaurants/2020"))
                 .andExpect(status().isOk())
