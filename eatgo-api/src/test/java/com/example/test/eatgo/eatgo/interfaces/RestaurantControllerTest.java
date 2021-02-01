@@ -1,10 +1,12 @@
 package com.example.test.eatgo.eatgo.interfaces;
 
+import com.example.test.eatgo.eatgo.application.RestaurantService;
 import com.example.test.eatgo.eatgo.domain.MenuItemRepository;
 import com.example.test.eatgo.eatgo.domain.MenuItemRepositoryImpl;
 import com.example.test.eatgo.eatgo.domain.RestaurantRepository;
 import com.example.test.eatgo.eatgo.domain.RestaurantRepositoryImpl;
 import org.junit.jupiter.api.Test;
+import org.mockito.Spy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -23,11 +25,8 @@ public class RestaurantControllerTest {
     @Autowired
     private MockMvc mvc;
 
-    @SpyBean(RestaurantRepositoryImpl.class) //bean 주입
-    private RestaurantRepository restaurantRepository;
-
-    @SpyBean(MenuItemRepositoryImpl.class)
-    private MenuItemRepository menuItemRepository;
+    @SpyBean(RestaurantService.class)
+    private RestaurantService restaurantService;
 
     @Test
     public void list() throws Exception {
