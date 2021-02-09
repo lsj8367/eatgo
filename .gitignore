@@ -34,3 +34,6 @@ out/
 
 ### VS Code ###
 .vscode/
+
+### Node.js ###
+/eatgo-web/node_modules
