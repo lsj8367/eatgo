@@ -30,9 +30,6 @@ public class RestaurantServiceTest {
 
     @BeforeEach // 모든 테스트 실행전에 실행해줌
     public void setUp(){
-//        restaurantRepository = new RestaurantRepositoryImpl();
-//        menuItemRepository = new MenuItemRepositoryImpl();
-
         mockRestaurantRepository();
         mockMenuItemRepository();
 
