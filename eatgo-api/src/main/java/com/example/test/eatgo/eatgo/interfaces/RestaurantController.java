@@ -13,6 +13,7 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.List;
 
+@CrossOrigin //CORS문제 해결
 @RestController
 public class RestaurantController {
 
