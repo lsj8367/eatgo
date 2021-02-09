@@ -18,8 +18,7 @@ import static org.hamcrest.core.StringContains.containsString;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.verify;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @SpringBootTest
@@ -33,7 +32,7 @@ public class RestaurantControllerTest {
     private RestaurantService restaurantService; //가짜 객체
 
     @Test
-    public void list() throws Exception {
+    public void list() throws Exception { //전체보기
         List<Restaurant> restaurants = new ArrayList<>();
         restaurants.add(new Restaurant(1004L, "JOKER House", "Seoul"));
 
@@ -50,7 +49,7 @@ public class RestaurantControllerTest {
     }
 
     @Test
-    public void detail() throws Exception{
+    public void detail() throws Exception{ //상세보기
         Restaurant restaurant1 = new Restaurant(1004L, "JOKER House", "Seoul");
         restaurant1.addMenuItem(new MenuItem("Kimchi"));
 
@@ -83,8 +82,11 @@ public class RestaurantControllerTest {
 
 
     @Test
-    public void create() throws Exception{
-        //Restaurant restaurant = new Restaurant(1234L, "BeRyong", "Seoul");
+    public void create() throws Exception{ //추가하기
+        given(restaurantService.addRestaurant(any())).will(invocation -> {
+            Restaurant restaurant = invocation.getArgument(0);
+            return new Restaurant(1234L, restaurant.getName(), restaurant.getAddress());
+        });
 
         mvc.perform(post("/restaurants")
                 .contentType(MediaType.APPLICATION_JSON)
@@ -97,6 +99,15 @@ public class RestaurantControllerTest {
         verify(restaurantService).addRestaurant(any()); //any() 뭐가들어오든 확인만하는것
     }
 
+    @Test
+    public void update() throws Exception{
+
+        mvc.perform(patch("/restaurants/1004")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content("{\"name\":\"JOKER Bar\", \"address\":\"Busan\"}"))
+                .andExpect(status().isOk());
+        verify(restaurantService).updateRestaurant(1004L, "JOKER Bar", "Busan");
+    }
 
 
 }
