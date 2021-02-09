@@ -14,6 +14,4 @@
         `).join('')}
     `;
     //JSON.stringify(restaurants);
-
-
 })();
