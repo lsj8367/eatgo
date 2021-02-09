@@ -7,6 +7,7 @@ import com.example.test.eatgo.eatgo.domain.RestaurantRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
 @Service
@@ -43,8 +44,9 @@ public class RestaurantService {
         return restaurantRepository.save(restaurant);
     }
 
+    @Transactional //별도의 save없이 트랜잭션 처리를 하여 변경내용을 저장해줌
     public Restaurant updateRestaurant(Long id, String name, String address) {
-        // TODO : update Restaurant....
+        // TODO : 정보 수정하기
         Restaurant restaurant = restaurantRepository.findById(id).orElse(null);
 
         restaurant.updateInformation(name, address);
