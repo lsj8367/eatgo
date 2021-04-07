@@ -96,7 +96,7 @@ public class RestaurantControllerTest {
 
 
     @Test
-    public void create() throws Exception{ //추가하기
+    public void createWithValidData() throws Exception{ //추가하기 잘됐을때 유효할때
         given(restaurantService.addRestaurant(any())).will(invocation -> {
             Restaurant restaurant = invocation.getArgument(0);
             return Restaurant.builder()
@@ -118,12 +118,36 @@ public class RestaurantControllerTest {
     }
 
     @Test
-    public void update() throws Exception{
+    public void createWithInValidData() throws Exception{ //추가하기 값이 유효하지 않을때 400번대 에러 발생
+        mvc.perform(post("/restaurants")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content("{\"name\" : \"\", \"address\" : \"\"}"))
+                .andExpect(status().isBadRequest());
+    }
+
+    @Test
+    public void updateWithValidData() throws Exception{ //업데이트 잘 됐을때
         mvc.perform(patch("/restaurants/1004")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content("{\"name\":\"JOKER Bar\", \"address\":\"Busan\"}"))
                 .andExpect(status().isOk());
         verify(restaurantService).updateRestaurant(1004L, "JOKER Bar", "Busan");
+    }
+
+    @Test
+    public void updateWithInvalidData() throws Exception{ //업데이트 이름 주소 없을떄
+        mvc.perform(patch("/restaurants/1004")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content("{\"name\":\"\", \"address\":\"\"}"))
+                .andExpect(status().isBadRequest());
+    }
+
+    @Test
+    public void updateNotExistName() throws Exception{ //업데이트 이름 없을떄
+        mvc.perform(patch("/restaurants/1004")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content("{\"name\":\"\", \"address\":\"Busan\"}"))
+                .andExpect(status().isBadRequest());
     }
 
 }
