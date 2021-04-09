@@ -54,7 +54,7 @@ public class RestaurantControllerTest {
     }
 
     @Test
-    public void detail() throws Exception{ //상세보기
+    public void detailWithExisted() throws Exception{ //상세보기 존재할때
         Restaurant restaurant1 = Restaurant.builder()
                         .id(1004L)
                         .name("JOKER House")
@@ -94,6 +94,15 @@ public class RestaurantControllerTest {
                 ));
     }
 
+    @Test
+    public void detailWithNotExisted() throws Exception { //존재하지 않을때
+        given(restaurantService.getRestaurant(404L))
+                               .willThrow(new RestaurantNotFoundException(404L));
+
+        mvc.perform(get("/restaurant/404"))
+                .andExpect(status().isNotFound());
+//                .andExpect(content().string("{}"));
+    }
 
     @Test
     public void createWithValidData() throws Exception{ //추가하기 잘됐을때 유효할때
