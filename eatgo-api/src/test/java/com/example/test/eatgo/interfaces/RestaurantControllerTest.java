@@ -4,7 +4,6 @@ import com.example.test.eatgo.application.RestaurantService;
 import com.example.test.eatgo.domain.MenuItem;
 import com.example.test.eatgo.domain.Restaurant;
 import com.example.test.eatgo.domain.RestaurantNotFoundException;
-import com.example.test.eatgo.eatgo.domain.*;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;

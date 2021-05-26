@@ -1,7 +1,6 @@
 package com.example.test.eatgo.application;
 
 import com.example.test.eatgo.domain.*;
-import com.example.test.eatgo.eatgo.domain.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -36,7 +35,6 @@ public class RestaurantService {
 
     @Transactional //별도의 save없이 트랜잭션 처리를 하여 변경내용을 저장해줌
     public Restaurant updateRestaurant(Long id, String name, String address) {
-        // TODO : 정보 수정하기
         Restaurant restaurant = restaurantRepository.findById(id).orElse(null);
 
         if(restaurant != null)
