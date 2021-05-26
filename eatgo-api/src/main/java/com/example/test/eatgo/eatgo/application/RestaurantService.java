@@ -1,30 +1,23 @@
 package com.example.test.eatgo.eatgo.application;
 
 import com.example.test.eatgo.eatgo.domain.*;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.List;
+import java.util.Optional;
 
 @Service
+@RequiredArgsConstructor
 public class RestaurantService {
 
-    @Autowired
-    private RestaurantRepository restaurantRepository;
-
-    @Autowired
-    private MenuItemRepository menuItemRepository;
-
-    public RestaurantService(RestaurantRepository restaurantRepository, MenuItemRepository menuItemRepository){
-        this.restaurantRepository = restaurantRepository;
-        this.menuItemRepository = menuItemRepository;
-    }
+    private final RestaurantRepository restaurantRepository;
+    private final MenuItemRepository menuItemRepository;
 
     public List<Restaurant> getRestaurants() {
-        List<Restaurant> restaurants = restaurantRepository.findAll();
-
-        return restaurants;
+        return restaurantRepository.findAll();
     }
 
     public Restaurant getRestaurant(Long id){
@@ -47,7 +40,8 @@ public class RestaurantService {
         // TODO : 정보 수정하기
         Restaurant restaurant = restaurantRepository.findById(id).orElse(null);
 
-        restaurant.updateInformation(name, address);
+        if(restaurant != null)
+            restaurant.updateInformation(name, address);
 
         return restaurant;
     }
