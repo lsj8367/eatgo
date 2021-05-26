@@ -1,8 +1,7 @@
-package com.example.test.eatgo.eatgo.application;
+package com.example.test.eatgo.application;
 
-import com.example.test.eatgo.eatgo.domain.MenuItem;
-import com.example.test.eatgo.eatgo.domain.MenuItemRepository;
-import com.example.test.eatgo.eatgo.domain.RestaurantRepository;
+import com.example.test.eatgo.domain.MenuItem;
+import com.example.test.eatgo.domain.MenuItemRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

@@ -1,4 +1,4 @@
-package com.example.test.eatgo.eatgo;
+package com.example.test.eatgo;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

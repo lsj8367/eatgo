@@ -1,10 +1,8 @@
-package com.example.test.eatgo.eatgo.domain;
+package com.example.test.eatgo.domain;
 
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
 class RestaurantTests {
 

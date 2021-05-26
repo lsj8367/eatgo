@@ -1,4 +1,4 @@
-package com.example.test.eatgo.eatgo.domain;
+package com.example.test.eatgo.domain;
 
 public class RestaurantNotFoundException extends RuntimeException {
     public RestaurantNotFoundException(long id) {

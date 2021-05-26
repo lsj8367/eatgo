@@ -1,11 +1,10 @@
-package com.example.test.eatgo.eatgo.application;
+package com.example.test.eatgo.application;
 
+import com.example.test.eatgo.domain.*;
 import com.example.test.eatgo.eatgo.domain.*;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.ArrayList;

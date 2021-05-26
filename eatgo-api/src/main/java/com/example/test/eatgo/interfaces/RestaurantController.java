@@ -1,7 +1,7 @@
-package com.example.test.eatgo.eatgo.interfaces;
+package com.example.test.eatgo.interfaces;
 
-import com.example.test.eatgo.eatgo.application.RestaurantService;
-import com.example.test.eatgo.eatgo.domain.Restaurant;
+import com.example.test.eatgo.application.RestaurantService;
+import com.example.test.eatgo.domain.Restaurant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

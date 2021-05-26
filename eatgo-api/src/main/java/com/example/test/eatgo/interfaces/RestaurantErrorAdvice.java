@@ -1,6 +1,6 @@
-package com.example.test.eatgo.eatgo.interfaces;
+package com.example.test.eatgo.interfaces;
 
-import com.example.test.eatgo.eatgo.domain.RestaurantNotFoundException;
+import com.example.test.eatgo.domain.RestaurantNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;

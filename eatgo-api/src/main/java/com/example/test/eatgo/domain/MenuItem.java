@@ -1,4 +1,4 @@
-package com.example.test.eatgo.eatgo.domain;
+package com.example.test.eatgo.domain;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.*;

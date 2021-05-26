@@ -1,4 +1,4 @@
-package com.example.test.eatgo.eatgo;
+package com.example.test.eatgo;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
