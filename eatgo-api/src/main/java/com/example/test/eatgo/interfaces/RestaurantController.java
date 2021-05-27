@@ -2,7 +2,7 @@ package com.example.test.eatgo.interfaces;
 
 import com.example.test.eatgo.application.RestaurantService;
 import com.example.test.eatgo.domain.Restaurant;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,10 +13,10 @@ import java.util.List;
 
 @CrossOrigin //CORS문제 해결
 @RestController
+@RequiredArgsConstructor
 public class RestaurantController {
 
-    @Autowired
-    private RestaurantService restaurantService;
+    private final RestaurantService restaurantService;
 
     @GetMapping("/restaurants")
     public List<Restaurant> list(){
