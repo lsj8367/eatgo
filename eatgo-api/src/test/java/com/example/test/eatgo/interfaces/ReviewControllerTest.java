@@ -12,6 +12,7 @@ import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.verify;
@@ -33,12 +34,9 @@ class ReviewControllerTest {
     @DisplayName("review만들기 valid")
     @Test
     public void createWithValidAttributes() throws Exception {
-        given(reviewService.addReview(any())).willReturn(
+        given(reviewService.addReview(eq(1L), any())).willReturn(
                 Review.builder()
-                        .id(123L)
-                        .name("lsj")
-                        .score(3)
-                        .description("Mat-it-da")
+                        .id(1004L)
                         .build()
         );
 
@@ -46,9 +44,9 @@ class ReviewControllerTest {
                 .contentType(MediaType.APPLICATION_JSON)
                 .content("{\"name\" : \"lsj\", \"score\" : 3, \"description\" : \"Mat-it-da\"}"))
                 .andExpect(status().isCreated())
-                .andExpect(header().string("location", "/restaurants/1/reviews/123"));
+                .andExpect(header().string("location", "/restaurants/1/reviews/1004"));
 
-        verify(reviewService).addReview(any());
+        verify(reviewService).addReview(eq(1L), any());
     }
 
     @DisplayName("review만들기 Invalid")
@@ -60,7 +58,7 @@ class ReviewControllerTest {
                 .andExpect(status().isBadRequest());
 
         //요청이 되면 안되고 없어야함 Invalid의 경우이기 때문
-        verify(reviewService, never()).addReview(any());
+        verify(reviewService, never()).addReview(eq(1L), any());
     }
 
 

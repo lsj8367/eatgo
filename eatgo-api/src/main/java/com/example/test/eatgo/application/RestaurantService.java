@@ -13,6 +13,7 @@ public class RestaurantService {
 
     private final RestaurantRepository restaurantRepository;
     private final MenuItemRepository menuItemRepository;
+    private final ReviewRepository reviewRepository;
 
     public List<Restaurant> getRestaurants() {
         return restaurantRepository.findAll();
@@ -23,8 +24,10 @@ public class RestaurantService {
                 .orElseThrow(() -> new RestaurantNotFoundException(id));
 
         List<MenuItem> menuItems = menuItemRepository.findAllByRestaurantId(id);
-
         restaurant.setMenuItems(menuItems);
+
+        List<Review> reviews = reviewRepository.findAllByRestaurantId(id);
+        restaurant.setReviews(reviews);
 
         return restaurant;
     }

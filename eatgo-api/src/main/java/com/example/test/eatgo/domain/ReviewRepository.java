@@ -1,7 +1,12 @@
 package com.example.test.eatgo.domain;
 
-import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.repository.CrudRepository;
 
-public interface ReviewRepository extends JpaRepository<Review, Long> {
+import java.util.List;
+
+public interface ReviewRepository extends CrudRepository<Review, Long> {
+
+    List<Review> findAllByRestaurantId(Long restaurantId);
+
     Review save(Review review);
 }
